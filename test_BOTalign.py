@@ -5,7 +5,7 @@
 import numpy as np
 import time
 import matplotlib.pyplot as plt
-from utils_BO import get_angle, generate_data, align_BO
+from BOTalign.utils_BO import get_angle, generate_data, align_BO
 
 
 '''
