@@ -14,7 +14,7 @@ from aspire.volume import Volume
 
 
 
-from utils_BO import get_angle, center, align_BO, q_to_rot
+from BOTalign.utils_BO import get_angle, center, align_BO, q_to_rot
 
 
 

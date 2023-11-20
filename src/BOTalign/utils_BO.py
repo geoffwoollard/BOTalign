@@ -6,7 +6,7 @@
 import numpy as np
 import pymanopt
 from numpy.linalg import norm
-import wemd
+from BOTalign import wemd
 import mrcfile
 import warnings
 from aspire.utils.rotation import Rotation
