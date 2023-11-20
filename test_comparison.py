@@ -43,7 +43,7 @@ def generate_data_compare(data_name,order_shift,threshold,inv_SNR):
         template=mrc.data
     L=template.shape[1]; shape=(L,L,L); ns_std=np.sqrt(inv_SNR*norm(template)**2/L**3);      
        
-    vol0=center(template,order_shift,threshold)+np.float32(normal(0,ns_std,shape)); 
+    vol0=center(template,order_shift,threshold)[0]+np.float32(normal(0,ns_std,shape)); 
     
     r=Rotation.generate_random_rotations(1); R_true=r._matrices[0];
     vol_rot=Volume(vol0).rotate(r)._data[0]; 
@@ -101,7 +101,7 @@ for I in range(4,5):
         BOTalign
         '''                                      
         tic=time.perf_counter(); para1=['wemd',32,200,True];   
-        vol_b=center(vol_given,order,threshold);
+        vol_b=center(vol_given,order,threshold)[0];
         [R_init_BO,R_rec_BO]=align_BO(Volume(vol0),Volume(vol_b),para1); 
         fastrotate3d(vol_given,R_rec_BO);
         toc=time.perf_counter(); 
@@ -129,7 +129,7 @@ for I in range(4,5):
         '''
         AlignOT
         '''
-        vol_b=center(vol_given,order,threshold); 
+        vol_b=center(vol_given,order,threshold)[0]; 
         with mrcfile.new('data/vol0.mrc',overwrite=True) as mrc:
             mrc.set_data(vol0);
         with mrcfile.new('data/vol_b.mrc',overwrite=True) as mrc:

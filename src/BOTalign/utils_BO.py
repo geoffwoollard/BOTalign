@@ -119,7 +119,7 @@ def center(vol,order_shift,threshold=-np.inf):
     
     vx=np.sum(v,axis=(1,2)); vy=np.sum(v,axis=(0,2)); vz=np.sum(v,axis=(0,1));
     m=np.array([X@vx,X@vy,X@vz]); vol_b=shift(vol,-m,order=order_shift,mode='constant')
-    return vol_b
+    return vol_b, m
 
 
 
